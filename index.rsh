@@ -5,21 +5,21 @@
 export const main = Reach.App(() => {
    
   //the president is the participant that deploys the contract
-  const President= Participant('President', {
+  const Alice= Participant('Alice', {
     // Specify the President's interact interface here
     ready: Fun([], Null)
   });
 
   //... while the senates are attach to the contract using API defined in Reach
-  const Senates= API('Senates', {
+  const Bobs= API('Bobs', {
     // Specify Senates' interact interface here
   });
   init();
-  President.only(()=>{
+  Alice.only(()=>{
    interact.ready()
    
   })
-  President.publish();
+  Alice.publish();
   commit();
   
 

@@ -4,26 +4,26 @@ const stdlib = loadStdlib(process.env);
 
 const startingBalance = stdlib.parseCurrency(100);
 
-const accPresident= await stdlib.newTestAccount(startingBalance);
+const accAlice= await stdlib.newTestAccount(startingBalance);
 
 console.log('Launching...');
-const ctcPresident = accPresident.contract(backend);
+const ctcAlice= accAlice.contract(backend);
 
 //create an Array for the Senates
-const arraySenates=[];
+const arrayBobs=[];
 
 //creating a function to reuse when creating new Senate
 
-const newSenate=async()=>{
+const newBobs=async()=>{
   const newSelect = async(who)=>{
-  const accSenates= await stdlib.newTestAccount(startingBalance);
-  const ctcSenates = accSenates.contract(backend, ctcPresident.getInfo());
-  arraySenates.push(accSenates.getAddress());
+  const accBobs= await stdlib.newTestAccount(startingBalance);
+  const ctcBobs= accBobs.contract(backend, ctcAlice.getInfo());
+  arrayBobs.push(accBobs.getAddress());
   }
   await newSelect("Bob");
   await newSelect("Bob");
   
-  console.log(arraySenates);
+  console.log(arrayBobs);
   
 };
 
